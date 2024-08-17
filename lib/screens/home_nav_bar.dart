@@ -36,6 +36,7 @@ class _HomeNavBarState extends State<HomeNavBar> {
           });
         },
         currentIndex: currentIndex,
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

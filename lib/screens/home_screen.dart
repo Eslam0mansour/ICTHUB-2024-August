@@ -1,10 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:new_8/data/data_models/user_data_model.dart';
+import 'package:new_8/data/data_source/products_data_source.dart';
+import 'package:new_8/widgets/error_widget.dart';
+import 'package:new_8/widgets/loading_widget.dart';
+import 'package:new_8/widgets/products_list_widget.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
-  final List<UserDataModel> items = [];
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    print('initState');
+
+    if (ProductsDataSource.items.isEmpty) {
+      ProductsDataSource.getProducts().then(
+        (value) {
+          setState(() {
+            print('setState');
+          });
+        },
+      );
+    } else {
+      print('data is already loaded before');
+    }
+  }
+
+  @override
+  void dispose() {
+    print('Home Screen was disposed');
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,24 +43,38 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Home Screen'),
         centerTitle: true,
       ),
-      body: Center(
-        child: ListView.builder(
-          padding: const EdgeInsets.all(8),
-          itemCount: items.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: Colors.grey[400],
-                title: Text(items[index].name),
-                subtitle: Text(items[index].phoneNumber),
-                trailing: Text(items[index].id),
-                onTap: items[index].onTab,
-              ),
-            );
-          },
-        ),
-      ),
+      body: ProductsDataSource.isLoading
+          ? const LoadingWidget()
+          : ProductsDataSource.isError
+              ? AppErrorWidget(
+                  errorMessage: ProductsDataSource.errorMessage,
+                  onTryAgain: () async {
+                    ProductsDataSource.items.clear();
+                    ProductsDataSource.isLoading = true;
+                    ProductsDataSource.isError = false;
+                    setState(() {});
+                    await ProductsDataSource.getProducts();
+                  },
+                )
+              : Center(
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      ProductsDataSource.items.clear();
+                      ProductsDataSource.isLoading = true;
+                      setState(() {});
+                      await ProductsDataSource.getProducts();
+                    },
+                    child: const ProductsListView(),
+                  ),
+                ),
     );
   }
 }
+
+/// bool ? true : false
+///
+/// if (bool) {
+///  return true;
+///  } else {
+///  return false;
+///  }
