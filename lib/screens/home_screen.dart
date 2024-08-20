@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:new_8/data/auth/app_authentication.dart';
 import 'package:new_8/data/data_source/products_data_source.dart';
+import 'package:new_8/widgets/custom_elevated_button.dart';
 import 'package:new_8/widgets/error_widget.dart';
 import 'package:new_8/widgets/loading_widget.dart';
 import 'package:new_8/widgets/products_list_widget.dart';
@@ -67,6 +69,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: const ProductsListView(),
                   ),
                 ),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Spacer(),
+            CustomElevatedButton(
+              textButton: 'Sign Out',
+              onPressed: () {
+                AppAuthentication.signOut(context);
+              },
+            ),
+            SizedBox(
+              height: 30,
+            )
+          ],
+        ),
+      ),
     );
   }
 }

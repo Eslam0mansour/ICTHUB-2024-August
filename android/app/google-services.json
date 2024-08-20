@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "713358762993",
+    "project_id": "ict-connect-firebase",
+    "storage_bucket": "ict-connect-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713358762993:android:3a5040c5ea3935ad539a50",
+        "android_client_info": {
+          "package_name": "com.example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbCILlm6yNQAk5M7ry6586U9_JyPDUBz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713358762993:android:a0f08250e1c3bd21539a50",
+        "android_client_info": {
+          "package_name": "com.example.new_8"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbCILlm6yNQAk5M7ry6586U9_JyPDUBz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
