@@ -65,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ProductsDataSource.isLoading = true;
                       setState(() {});
                       await ProductsDataSource.getProducts();
+                      setState(() {});
                     },
                     child: const ProductsListView(),
                   ),

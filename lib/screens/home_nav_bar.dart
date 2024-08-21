@@ -1,8 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:new_8/data/auth/app_authentication.dart';
 import 'package:new_8/screens/home_screen.dart';
-import 'package:new_8/widgets/custom_elevated_button.dart';
+import 'package:new_8/screens/profile_screen.dart';
 
 class HomeNavBar extends StatefulWidget {
   const HomeNavBar({super.key});
@@ -13,17 +11,13 @@ class HomeNavBar extends StatefulWidget {
 
 class _HomeNavBarState extends State<HomeNavBar> {
   List<Widget> screens = <Widget>[
-    HomeScreen(),
+    const HomeScreen(),
     const Scaffold(
       body: Center(
         child: Text('Search Screen'),
       ),
     ),
-    const Scaffold(
-      body: Center(
-        child: Text('Profile Screen'),
-      ),
-    ),
+    const ProfileScreen(),
   ];
 
   int currentIndex = 0;
@@ -31,7 +25,6 @@ class _HomeNavBarState extends State<HomeNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: (int index) {
@@ -56,7 +49,6 @@ class _HomeNavBarState extends State<HomeNavBar> {
           ),
         ],
       ),
-      
     );
   }
 }

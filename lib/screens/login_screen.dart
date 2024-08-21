@@ -1,6 +1,3 @@
-import 'dart:ffi';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_8/data/auth/app_authentication.dart';
 import 'package:new_8/data/validator/validator.dart';
@@ -74,14 +71,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () async {
                       if (formKey.currentState!.validate()) {
                         AppAuthentication.login(
-                            context:context,
+                            context: context,
                             mail: mailController!.text,
                             password: passwordController!.text);
-                        // Navigator.pushReplacement(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => HomeNavBar(),
-                        //     ));
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeNavBar(),
+                            ));
                         // Navigator.pushAndRemoveUntil(
                         //   context,
                         //   MaterialPageRoute(

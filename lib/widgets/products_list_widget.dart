@@ -15,17 +15,17 @@ class ProductsListView extends StatelessWidget {
           child: ListTile(
             tileColor: Colors.grey[200],
             leading: Image.network(
-              ProductsDataSource.items[index].image,
+              ProductsDataSource.items[index].thumbnail ?? '',
               width: 50,
               height: 50,
               fit: BoxFit.contain,
             ),
             title: Text(
-              ProductsDataSource.items[index].title,
+              ProductsDataSource.items[index].title ?? '',
               maxLines: 2,
             ),
             subtitle: Text(
-              ProductsDataSource.items[index].description,
+              ProductsDataSource.items[index].description ?? '',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),

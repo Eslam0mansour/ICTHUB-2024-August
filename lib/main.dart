@@ -4,10 +4,10 @@ import 'package:new_8/firebase_options.dart';
 import 'package:new_8/new_app.dart';
 
 /// new main function
-void main()async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
   runApp(const NewApp());
 }
